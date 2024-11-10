@@ -62,7 +62,11 @@ const AgregarProducto = () => {
   };
   const handleGenerarDesc = async () => {
     const title = product.nombre;
-  
+
+    if(title ==='') {
+      
+    }
+
     try {
       // Crear un FormData para enviar el título y la imagen (si existe)
       const formData = new FormData();
@@ -153,6 +157,8 @@ const AgregarProducto = () => {
           alignItems: "center",
           minHeight: "100vh",
           width: "100%",
+          background: "linear-gradient(135deg, #4a90e2, #ff3370)",
+          padding:"16px"
         }}
       >
         <Box
@@ -164,7 +170,10 @@ const AgregarProducto = () => {
             gap: 4,
             maxWidth: { xs: "90%", sm: "80%", md: "600px" },
             width: "100%",
-            background: "#f1f2f3",
+            backgroundColor: "#fff",
+            padding: "32px",
+            borderRadius: "12px",
+            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
           }}
         >
           <Typography variant="h4" component="h2">
@@ -267,7 +276,7 @@ const AgregarProducto = () => {
             type="submit"
             variant="contained"
             color="primary"
-            disabled={loading}
+            disabled={loading || !product.nombre}
             onClick={handleGenerarDesc}
             sx={{
               background: "#033E8C",
